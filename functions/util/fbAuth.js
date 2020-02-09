@@ -1,4 +1,4 @@
-const { admin } = require("./admin")
+const { admin, db } = require("./admin")
 
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
