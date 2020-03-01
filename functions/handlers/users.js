@@ -60,7 +60,9 @@ exports.signup = (req, res) => {
       if (err.code === "auth/email-already-in-use") {
         return res.status(400).json({ email: "Email is already in use" })
       } else {
-        return res.status(500).json({ error: err.code })
+        return res
+          .status(500)
+          .json({ general: "Something went wrong, please try again" })
       }
     })
 }
@@ -87,13 +89,11 @@ exports.login = (req, res) => {
     })
     .catch(err => {
       console.error(err)
-      if (err.code === "auth/invalid-email") {
-        return res
-          .status(403)
-          .json({ general: "Wrong credentials, please try again" })
-      } else {
-        return res.status(500).json({ error: err.code })
-      }
+      //auth/wrong-password
+      //auth/user-not-found
+      return res
+        .status(403)
+        .json({ general: "Wrong credentials, please try again" })
     })
 }
 //Add user details
@@ -210,6 +210,7 @@ exports.uploadImage = (req, res) => {
   let imageToBeUploaded = {}
   let imageFileName
 
+  // eslint-disable-next-line consistent-return
   busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
     console.log(fieldname, file, filename, encoding, mimetype)
     if (mimetype !== "image/jpeg" && mimetype !== "image/png") {
