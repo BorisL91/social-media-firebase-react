@@ -210,7 +210,6 @@ exports.uploadImage = (req, res) => {
   let imageToBeUploaded = {}
   let imageFileName
 
-  // eslint-disable-next-line consistent-return
   busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
     console.log(fieldname, file, filename, encoding, mimetype)
     if (mimetype !== "image/jpeg" && mimetype !== "image/png") {
@@ -224,12 +223,12 @@ exports.uploadImage = (req, res) => {
     ).toString()}.${imageExtension}`
     const filepath = path.join(os.tmpdir(), imageFileName)
     imageToBeUploaded = { filepath, mimetype }
-    file.pipe(fs.createWriteStream(filepath))
+    return file.pipe(fs.createWriteStream(filepath))
   })
   busboy.on("finish", () => {
     admin
       .storage()
-      .bucket(config.storageBucket)
+      .bucket()
       .upload(imageToBeUploaded.filepath, {
         resumable: false,
         metadata: {
