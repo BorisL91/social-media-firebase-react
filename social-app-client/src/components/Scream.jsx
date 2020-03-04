@@ -39,7 +39,6 @@ const Scream = ({
         image={userImage}
         title='Profile Image'
         className={classes.image}
-        component={() => null}
       />
       <CardContent className={classes.content}>
         <Typography
