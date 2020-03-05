@@ -5,7 +5,7 @@ import AppIcon from ".././components/images/icon.png"
 import axios from "axios"
 
 //MUI stuff
-import withStyles from "@material-ui/core/styles/withStyles"
+import { withStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
@@ -64,6 +64,7 @@ export class Login extends Component {
       .post("/login", userData)
       .then(res => {
         console.log(res.data)
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`)
         this.setState({
           loading: false
         })
