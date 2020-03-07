@@ -18,6 +18,9 @@ const mapStateToProps = state => ({
 })
 
 AuthRoute.propTypes = {
-  user: shape({}).isRequired
+  user: shape({})
+}
+AuthRoute.defaultProps = {
+  user: {}
 }
 export default connect(mapStateToProps)(AuthRoute)

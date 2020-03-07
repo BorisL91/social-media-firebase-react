@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { shape, func } from "prop-types"
 import { Link } from "react-router-dom"
-import AppIcon from ".././components/images/icon.png"
+import AppIcon from "../images/icon.png"
 
 //MUI stuff
 import { withStyles } from "@material-ui/core/styles"
