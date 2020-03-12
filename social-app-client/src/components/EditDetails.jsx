@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import { shape, func } from "prop-types"
 import themeStyles from "../util/theme"
+import MyButton from "../util/MyButton"
 //MUI
 import withStyles from "@material-ui/core/styles/withStyles"
-import Tooltip from "@material-ui/core/Tooltip"
-import IconButton from "@material-ui/core/IconButton"
 import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
 import Dialog from "@material-ui/core/Dialog"
@@ -70,15 +69,14 @@ class EditDetails extends Component {
     const { classes } = this.props
     return (
       <>
-        <Tooltip title='Edit Details' placement='top'>
-          <Button
-            onClick={this.handleOpen}
-            className={classes.button}
-            variant='outlined'
-          >
-            <EditIcon color='primary' />
-          </Button>
-        </Tooltip>
+        <MyButton
+          tip='Edit details'
+          onClick={this.handleOpen}
+          variant='outlined'
+          btnClassName={classes.button}
+        >
+          <EditIcon color='primary' />
+        </MyButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

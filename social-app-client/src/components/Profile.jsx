@@ -10,8 +10,6 @@ import Button from "@material-ui/core/Button"
 import Paper from "@material-ui/core/Paper"
 import MuiLink from "@material-ui/core/Link"
 import Typography from "@material-ui/core/Typography"
-import IconButton from "@material-ui/core/IconButton"
-import Tooltip from "@material-ui/core/Tooltip"
 //Icons
 import LocationOn from "@material-ui/icons/LocationOn"
 import LinkIcon from "@material-ui/icons/Link"
@@ -21,6 +19,7 @@ import KeyboardReturnIcon from "@material-ui/icons/KeyboardReturn"
 //Redux
 import { connect } from "react-redux"
 import { logoutUser, uploadImage } from "../redux/actions/userActions"
+import MyButton from "../util/MyButton"
 
 const styles = theme => themeStyles
 
@@ -64,11 +63,13 @@ export class Profile extends Component {
                 hidden='hidden'
                 onChange={this.handleImageChange}
               />
-              <Tooltip title='Edit profile picture' placement='top'>
-                <IconButton onClick={this.handleEditPicture} className='button'>
-                  <EditIcon color='primary' />
-                </IconButton>
-              </Tooltip>
+              <MyButton
+                tip='Edit profile picture'
+                onClick={this.handleEditPicture}
+                btnClassName='button'
+              >
+                <EditIcon color='primary' />
+              </MyButton>
             </div>
             <hr />
             <div className='profile-details'>
@@ -104,11 +105,13 @@ export class Profile extends Component {
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <EditDetails />
-              <Tooltip title='Logout'>
-                <Button onClick={this.handleLogout} variant='outlined'>
-                  <KeyboardReturnIcon color='primary' />
-                </Button>
-              </Tooltip>
+              <MyButton
+                variant='outlined'
+                tip='Logout"'
+                onClick={this.handleLogout}
+              >
+                <KeyboardReturnIcon color='primary' />
+              </MyButton>
             </div>
           </div>
         </Paper>
