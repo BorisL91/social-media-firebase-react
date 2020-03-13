@@ -1,28 +1,21 @@
 import React, { Component } from "react"
+import { func, shape } from "prop-types"
 import Grid from "@material-ui/core/Grid"
 import Scream from "../components/Scream"
 import Profile from "../components/Profile"
-import axios from "axios"
+
+import { connect } from "react-redux"
+import { getScreams } from "../redux/actions/dataActions"
 
 export class Home extends Component {
-  state = {
-    screams: null
-  }
-
   componentDidMount() {
-    axios
-      .get("/screams")
-      .then(res => {
-        this.setState({
-          screams: res.data
-        })
-      })
-      .catch(err => console.error(err))
+    this.props.getScreams()
   }
 
   render() {
-    let recentScreams = this.state.screams ? (
-      this.state.screams.map(screamData => (
+    const { screams, loading } = this.props.data
+    let recentScreams = !loading ? (
+      screams.map(screamData => (
         <Scream scream={screamData} key={screamData.screamId} />
       ))
     ) : (
@@ -42,4 +35,13 @@ export class Home extends Component {
   }
 }
 
-export default Home
+Home.propTypes = {
+  getScreams: func.isRequired,
+  data: shape({}).isRequired
+}
+
+const mapStateToProps = state => ({
+  data: state.data
+})
+
+export default connect(mapStateToProps, { getScreams })(Home)

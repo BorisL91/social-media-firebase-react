@@ -8,8 +8,8 @@ export default {
     },
     secondary: {
       light: "#ff6333",
-      main: "#ff3900",
-      dark: "#008394",
+      main: "#ff3d00",
+      dark: "#b22a00",
       contrastText: "#fff"
     }
   },
@@ -30,16 +30,24 @@ export default {
   },
   button: {
     marginTop: 20,
-    marginBottom: 20,
     position: "relative"
   },
   customError: {
     color: "red",
     fontSize: "0.8rem",
-    marginTop: "10px"
+    marginTop: 10
   },
   progress: {
-    position: "absoulute"
+    position: "absolute"
+  },
+  invisibleSeparator: {
+    border: "none",
+    margin: 4
+  },
+  visibleSeparator: {
+    width: "100%",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
+    marginBottom: 20
   },
   paper: {
     padding: 20
