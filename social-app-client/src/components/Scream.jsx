@@ -1,5 +1,8 @@
 import React from "react"
 import { shape, func } from "prop-types"
+import MyButton from "../util/MyButton"
+import DeleteScream from "./DeleteScream"
+
 import { Link } from "react-router-dom"
 import withStyles from "@material-ui/core/styles/withStyles"
 import dayjs from "dayjs"
@@ -16,10 +19,9 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
 import { connect } from "react-redux"
 import { likeScream, unlikeScream } from "../redux/actions/dataActions"
 
-import MyButton from "../util/MyButton"
-
 const styles = {
   card: {
+    position: "relative",
     display: "flex",
     marginBottom: 20
   },
@@ -64,7 +66,10 @@ class Scream extends React.Component {
         likeCount,
         commentCount
       },
-      user: { authenticated },
+      user: {
+        authenticated,
+        credentials: { handle }
+      },
       classes
     } = this.props
 
@@ -84,6 +89,11 @@ class Scream extends React.Component {
       </MyButton>
     )
 
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeleteScream screamId={screamId} />
+      ) : null
+
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -100,6 +110,7 @@ class Scream extends React.Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant='body2' color='textSecondary'>
             {dayjs(createdAt).fromNow()}
           </Typography>
