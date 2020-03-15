@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { shape, func } from "prop-types"
 import MyButton from "../util/MyButton"
+
 //MUI
 import withStyles from "@material-ui/core/styles/withStyles"
 import Button from "@material-ui/core/Button"
@@ -92,7 +93,8 @@ class PostScream extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle> Post a new scream</DialogTitle>
+          <DialogTitle> Post something!</DialogTitle>
+
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField

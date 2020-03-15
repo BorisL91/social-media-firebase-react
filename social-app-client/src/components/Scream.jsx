@@ -2,6 +2,7 @@ import React from "react"
 import { shape, func } from "prop-types"
 import MyButton from "../util/MyButton"
 import DeleteScream from "./DeleteScream"
+import Linkify from "react-linkify"
 
 import { Link } from "react-router-dom"
 import withStyles from "@material-ui/core/styles/withStyles"
@@ -102,25 +103,27 @@ class Scream extends React.Component {
           className={classes.image}
         />
         <CardContent className={classes.content}>
-          <Typography
-            variant='h5'
-            component={Link}
-            to={`/users/${userHandle}`}
-            color='primary'
-          >
-            {userHandle}
-          </Typography>
-          {deleteButton}
-          <Typography variant='body2' color='textSecondary'>
-            {dayjs(createdAt).fromNow()}
-          </Typography>
-          <Typography variant='body1'>{body}</Typography>
-          {likeButton}
-          <span>{likeCount} likes</span>
-          <MyButton tip='comments'>
-            <ChatIcon color='primary' />
-          </MyButton>
-          <span>{commentCount} comments</span>
+          <Linkify target='_blank'>
+            <Typography
+              variant='h5'
+              component={Link}
+              to={`/users/${userHandle}`}
+              color='primary'
+            >
+              {userHandle}
+            </Typography>
+            {deleteButton}
+            <Typography variant='body2' color='textSecondary'>
+              {dayjs(createdAt).fromNow()}
+            </Typography>
+            <Typography variant='body1'>{body}</Typography>
+            {likeButton}
+            <span>{likeCount} likes</span>
+            <MyButton tip='comments'>
+              <ChatIcon color='primary' />
+            </MyButton>
+            <span>{commentCount} comments</span>
+          </Linkify>
         </CardContent>
       </Card>
     )
