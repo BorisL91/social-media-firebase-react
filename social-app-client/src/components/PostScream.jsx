@@ -21,6 +21,7 @@ const styles = {
   submitButton: {
     position: "relative",
     marginTop: "1rem",
+    marginBottom: "1rem",
     float: "right"
   },
   progressSpinner: {

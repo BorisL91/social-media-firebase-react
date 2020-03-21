@@ -3,7 +3,9 @@ import { shape, func, string } from "prop-types"
 import withStyles from "@material-ui/core/styles/withStyles"
 import MyButton from "../util/MyButton"
 import dayjs from "dayjs"
+import Linkify from "react-linkify"
 import { Link } from "react-router-dom"
+import LikeButton from "./LikeButton"
 //MUI Stuff
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
@@ -14,6 +16,7 @@ import Typography from "@material-ui/core/Typography"
 //icons
 import CloseIcon from "@material-ui/icons/Close"
 import UnfoldMore from "@material-ui/icons/UnfoldMore"
+import ChatIcon from "@material-ui/icons/Chat"
 //redux
 import { connect } from "react-redux"
 import { getScream } from "../redux/actions/dataActions"
@@ -36,6 +39,15 @@ const styles = {
   closeButton: {
     position: "absolute",
     left: "90%"
+  },
+  expandButton: {
+    position: "absolute",
+    left: "90%"
+  },
+  spinnerDiv: {
+    textAlign: "center",
+    marginTop: 50,
+    marginBottom: 50
   }
 }
 
@@ -69,7 +81,9 @@ class ScreamDialog extends Component {
     } = this.props
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={70} />
+      <div className={classes.spinnerDiv}>
+        <CircularProgress size={70} thickness={2} />
+      </div>
     ) : (
       <Grid container spacing={16}>
         <Grid item sm={5}>
@@ -90,6 +104,11 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant='body1'>{body}</Typography>
+          <LikeButton screamId={screamId} />
+          <span>{likeCount} likes</span>
+          <MyButton tip='comments'>
+            <ChatIcon color='primary' />
+          </MyButton>
         </Grid>
       </Grid>
     )
@@ -117,7 +136,7 @@ class ScreamDialog extends Component {
             <CloseIcon />
           </MyButton>
           <DialogContent className={classes.dialogContent}>
-            {dialogMarkup}
+            <Linkify> {dialogMarkup}</Linkify>
           </DialogContent>
         </Dialog>
       </>
@@ -129,8 +148,8 @@ ScreamDialog.propTypes = {
   getScream: func.isRequired,
   screamId: string.isRequired,
   userHandle: string.isRequired,
-  scream: shape.isRequired,
-  UI: shape.isRequired
+  scream: shape({}).isRequired,
+  UI: shape({}).isRequired
 }
 
 const mapStateToProps = state => ({
