@@ -1,6 +1,6 @@
 import React from "react"
 import { shape } from "prop-types"
-import MyButton from "../util/MyButton"
+import MyButton from "../../util/MyButton"
 import DeleteScream from "./DeleteScream"
 import Linkify from "react-linkify"
 import ScreamDialog from "./ScreamDialog"

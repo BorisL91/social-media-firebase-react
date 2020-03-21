@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { shape, func } from "prop-types"
 import { Link } from "react-router-dom"
-import themeStyles from "../util/theme"
+import themeStyles from "../../util/theme"
 import dayjs from "dayjs"
 import EditDetails from "./EditDetails"
 //MUI stuff
@@ -18,8 +18,8 @@ import EditIcon from "@material-ui/icons/Edit"
 import KeyboardReturnIcon from "@material-ui/icons/KeyboardReturn"
 //Redux
 import { connect } from "react-redux"
-import { logoutUser, uploadImage } from "../redux/actions/userActions"
-import MyButton from "../util/MyButton"
+import { logoutUser, uploadImage } from "../../redux/actions/userActions"
+import MyButton from "../../util/MyButton"
 
 const styles = theme => themeStyles
 

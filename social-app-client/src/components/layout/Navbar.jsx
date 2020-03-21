@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { bool } from "prop-types"
-import MyButton from "../util/MyButton"
-import PostScream from "./PostScream"
+import MyButton from "../../util/MyButton"
+import PostScream from "../scream/PostScream"
 //redux
 import { connect } from "react-redux"
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { shape, func } from "prop-types"
-import themeStyles from "../util/theme"
-import MyButton from "../util/MyButton"
+import themeStyles from "../../util/theme"
+import MyButton from "../../util/MyButton"
 //MUI
 import withStyles from "@material-ui/core/styles/withStyles"
 import Button from "@material-ui/core/Button"
@@ -14,7 +14,7 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import EditIcon from "@material-ui/icons/Edit"
 //redux
 import { connect } from "react-redux"
-import { editUserDetails } from "../redux/actions/userActions"
+import { editUserDetails } from "../../redux/actions/userActions"
 
 const styles = theme => themeStyles
 
