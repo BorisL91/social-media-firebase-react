@@ -3,6 +3,7 @@ import { shape, func } from "prop-types"
 import MyButton from "../util/MyButton"
 import DeleteScream from "./DeleteScream"
 import Linkify from "react-linkify"
+import ScreamDialog from "./ScreamDialog"
 
 import { Link } from "react-router-dom"
 import withStyles from "@material-ui/core/styles/withStyles"
@@ -124,6 +125,7 @@ class Scream extends React.Component {
             </MyButton>
             <span>{commentCount} comments</span>
           </Linkify>
+          <ScreamDialog screamId={screamId} userHandle={userHandle} />
         </CardContent>
       </Card>
     )
