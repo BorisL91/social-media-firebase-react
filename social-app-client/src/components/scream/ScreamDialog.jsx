@@ -7,6 +7,7 @@ import Linkify from "react-linkify"
 import { Link } from "react-router-dom"
 import LikeButton from "./LikeButton"
 import Comments from "./Comments"
+import CommentForm from "./CommentForm"
 //MUI Stuff
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
@@ -116,9 +117,9 @@ class ScreamDialog extends Component {
             <ChatIcon color='primary' />
           </MyButton>
           <span>{commentCount} comments</span>
-          <Comments comments={comments} />
         </Grid>
-        <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
+        <Comments comments={comments} />
       </Grid>
     )
 
