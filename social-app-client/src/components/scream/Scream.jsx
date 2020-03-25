@@ -1,5 +1,5 @@
 import React from "react"
-import { shape } from "prop-types"
+import { shape, bool } from "prop-types"
 import MyButton from "../../util/MyButton"
 import DeleteScream from "./DeleteScream"
 import Linkify from "react-linkify"
@@ -88,7 +88,11 @@ class Scream extends React.Component {
             </MyButton>
             <span>{commentCount} comments</span>
           </Linkify>
-          <ScreamDialog screamId={screamId} userHandle={userHandle} />
+          <ScreamDialog
+            screamId={screamId}
+            userHandle={userHandle}
+            openDialog={this.props.openDialog}
+          />
         </CardContent>
       </Card>
     )
@@ -98,7 +102,8 @@ class Scream extends React.Component {
 Scream.propTypes = {
   user: shape({}).isRequired,
   scream: shape({}).isRequired,
-  classes: shape({}).isRequired
+  classes: shape({}).isRequired,
+  openDialog: bool
 }
 
 const mapStateToProps = state => ({
