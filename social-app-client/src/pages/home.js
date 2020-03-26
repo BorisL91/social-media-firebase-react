@@ -3,6 +3,7 @@ import { func, shape } from "prop-types"
 import Grid from "@material-ui/core/Grid"
 import Scream from "../components/scream/Scream"
 import Profile from "../components/profile/Profile"
+import ScreamSkeleton from "../util/ScreamSkeleton"
 
 import { connect } from "react-redux"
 import { getScreams } from "../redux/actions/dataActions"
@@ -20,7 +21,7 @@ export class Home extends Component {
         <Scream scream={screamData} key={screamData.screamId} />
       ))
     ) : (
-      <p>Loading...</p>
+      <ScreamSkeleton />
     )
 
     return (
