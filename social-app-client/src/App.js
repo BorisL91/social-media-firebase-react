@@ -52,6 +52,9 @@ if (token) {
   }
 }
 
+axios.defaults.baseURL =
+  "https://us-central1-social-media-app-73241.cloudfunctions.net/api"
+
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
