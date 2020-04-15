@@ -12,7 +12,7 @@ const middleware = [thunk]
 const reducers = combineReducers({
   user: userReducer,
   data: dataReducer,
-  UI: uiReducer
+  UI: uiReducer,
 })
 
 const store = createStore(
@@ -20,7 +20,9 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__
+      ? window.__REDUX_DEVTOOLS_EXTENSION__()
+      : (f) => f
   )
 )
 
